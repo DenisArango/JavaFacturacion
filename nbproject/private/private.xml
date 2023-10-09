@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProyects/JavaFacturacion/src/javafacturacion/JavaFacturacion.java</file>
+            <file>file:/D:/NetBeansProyects/JavaFacturacion/src/Vista/Login.java</file>
+            <file>file:/D:/NetBeansProyects/JavaFacturacion/src/Modelo/FacturaDetalle.java</file>
+            <file>file:/D:/NetBeansProyects/JavaFacturacion/src/Vista/Inicio.java</file>
         </group>
     </open-files>
 </project-private>
