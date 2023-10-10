@@ -39,7 +39,7 @@ public class SqlUsuarios extends Conexion.CreateConection {
             return validate;
         } catch (SQLException ex) {
             Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            return 0;
+            return validate;
         }
     }
     
