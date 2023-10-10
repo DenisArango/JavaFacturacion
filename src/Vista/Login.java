@@ -5,14 +5,7 @@
  */
 package Vista;
 
-import Conexion.CreateConection;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Modelo.SqlUsuarios;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,20 +14,15 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    Connection conn = null;
-    CallableStatement cs = null;
-    PreparedStatement st = null;
-    CreateConection cn = new CreateConection();
-    String qry = null;
-    ResultSet rs;
+    Login frmLogin;
+    Inicio vistaInicio;
     
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,8 +35,8 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +57,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        txtContraseña.setPreferredSize(new java.awt.Dimension(5, 22));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,8 +72,8 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsuario)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)))
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addComponent(btnLogin)))
@@ -96,11 +86,15 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
                 .addComponent(btnLogin)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -113,26 +107,24 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        try {
-            String usuario = txtUsuario.getText();
-            String contraseña = txtContraseña.getText();
-            
-            qry = "SELECT LOGIN(?,?)";
-            conn = cn.getConection();
-            st = conn.prepareStatement(qry);
-            st.setString(1, usuario);
-            st.setString(2, contraseña);
-            rs = st.executeQuery();
-            cs.close();
-            conn.close();
-            
-            int rol = rs.getInt(1);
-            System.out.println(rol);
-            
-        } catch (SQLException ex) {
-             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        SqlUsuarios modSql = new SqlUsuarios();
+        String usuario = txtUsuario.getText();
+        String contraseña = new String(txtContraseña.getPassword());
         
+        if(usuario.equals("") || contraseña.equals("")){
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        }
+        else{
+            if(modSql.Login(usuario, contraseña) == true){
+                frmLogin = null;
+                this.dispose();
+                
+                vistaInicio = new Inicio();
+                vistaInicio.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales");
+            }
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -174,7 +166,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
