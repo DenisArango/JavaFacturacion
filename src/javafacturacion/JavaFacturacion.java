@@ -5,6 +5,7 @@
  */
 package javafacturacion;
 
+
 /**
  *
  * @author Denis Arango
@@ -15,7 +16,7 @@ public class JavaFacturacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
     }
     
 }
