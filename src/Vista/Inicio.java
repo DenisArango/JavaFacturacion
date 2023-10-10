@@ -42,9 +42,6 @@ public class Inicio extends javax.swing.JFrame {
         menProveedores = new javax.swing.JMenu();
         opNuevoProveedor = new javax.swing.JMenuItem();
         opConsultarProveedores = new javax.swing.JMenuItem();
-        menDepartamentos = new javax.swing.JMenu();
-        opNuevoDepartamento = new javax.swing.JMenuItem();
-        opConsultarDepartamentos = new javax.swing.JMenuItem();
         menUsuarios = new javax.swing.JMenu();
         opNuevoUsuario = new javax.swing.JMenuItem();
         opConsultarUsuarios = new javax.swing.JMenuItem();
@@ -99,16 +96,6 @@ public class Inicio extends javax.swing.JFrame {
         menProveedores.add(opConsultarProveedores);
 
         jMenuBar1.add(menProveedores);
-
-        menDepartamentos.setText("Departamentos");
-
-        opNuevoDepartamento.setText("Nuevo Departamento");
-        menDepartamentos.add(opNuevoDepartamento);
-
-        opConsultarDepartamentos.setText("Consultar Departamentos");
-        menDepartamentos.add(opConsultarDepartamentos);
-
-        jMenuBar1.add(menDepartamentos);
 
         menUsuarios.setText("Usuarios");
 
@@ -183,16 +170,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenu menDepartamentos;
     private javax.swing.JMenu menProveedores;
     private javax.swing.JMenu menUsuarios;
     private javax.swing.JMenu opConsultarClientes;
-    private javax.swing.JMenuItem opConsultarDepartamentos;
     private javax.swing.JMenu opConsultarFacturas;
     private javax.swing.JMenu opConsultarProductos;
     private javax.swing.JMenuItem opConsultarProveedores;
     private javax.swing.JMenuItem opConsultarUsuarios;
-    private javax.swing.JMenuItem opNuevoDepartamento;
     private javax.swing.JMenu opNuevoIngreso;
     private javax.swing.JMenuItem opNuevoProveedor;
     private javax.swing.JMenuItem opNuevoUsuario;
