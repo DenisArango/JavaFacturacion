@@ -25,14 +25,17 @@ public class SqlUsuarios extends Conexion.CreateConection {
         int validate = 0;
         try {
             conn = cn.getConection();
-            qry = "SELECT VALIDATE_USER(?,?)";
+            qry = "SELECT ESTADO FROM USUARIO WHERE USUARIO = ? AND CONTRASEÑA = ?";
             st = conn.prepareStatement(qry);
             st.setString(1, usuario);
             st.setString(2, contraseña);
             rs = st.executeQuery();
             if(rs.next()){
-                System.out.println(rs.getInt("VALIDATE_USER"));
-                validate = rs.getInt("VALIDATE_USER");
+                if(rs.getInt("ESTADO") == 1){
+                    validate++;
+                }else{
+                    validate--;
+                }
             }
             st.close();
             conn.close();
@@ -43,10 +46,11 @@ public class SqlUsuarios extends Conexion.CreateConection {
         }
     }
     
-    public boolean Login (String usuario, String contraseña){
-        Usuario usr = new Usuario();
-        
-        if(validarUsuario(usuario, contraseña) == 1){
+    public int Login (Usuario usr){
+        String usuario = usr.getUsuario();
+        String contraseña = usr.getContraseña();
+        int validate = validarUsuario(usuario, contraseña);
+        if (validate == 1){
             try {
                 conn = cn.getConection();
                 qry = "SELECT U.ID_USUARIO, U.USUARIO, U.CONTRASEÑA, R.ID_ROL FROM USUARIO U INNER JOIN ROL R ON U.ID_ROL = R.ID_ROL WHERE U.USUARIO = ? AND U.CONTRASEÑA = ?;";
@@ -57,21 +61,14 @@ public class SqlUsuarios extends Conexion.CreateConection {
 
                 if(rs.next()){
                     usr.setIdUsuario(rs.getInt("ID_USUARIO"));
-                    usr.setUsuario(rs.getString("USUARIO"));
-                    usr.setContraseña(rs.getString("CONTRASEÑA"));
-                    usr.setIdRol(rs.getInt("ID_ROL"));
-                    return true;
-                }else{
-                    return false;
+                    usr.setIdRol(rs.getInt("ID_ROL"));                        
                 }
 
-            } catch (SQLException ex) {
-                Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);     
-                return false;
-            }
-        }else{
-            return false;
+            } catch (SQLException ex) {     
+                Logger.getLogger(SqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+
         }
-        
+        return validate;
     }
 }
