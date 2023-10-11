@@ -6,6 +6,7 @@
 package Vista;
 
 import Modelo.SqlUsuarios;
+import Modelo.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -113,21 +114,30 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         SqlUsuarios modSql = new SqlUsuarios();
+        Usuario mod = new Usuario();
         String usuario = txtUsuario.getText();
         String contraseña = new String(txtContraseña.getPassword());
+        
+        mod.setUsuario(usuario);
+        mod.setContraseña(contraseña);
         
         if(usuario.equals("") || contraseña.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
         }
         else{
-            if(modSql.Login(usuario, contraseña) == true){
-                frmLogin = null;
-                this.dispose();
-                
-                vistaInicio = new Inicio();
-                vistaInicio.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales");
+            switch (modSql.Login(mod)) {
+                case 1:
+                    frmLogin = null;
+                    this.dispose();
+                    vistaInicio = new Inicio(mod);
+                    vistaInicio.setVisible(true);
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "El usuario está inactivo");
+                    break;
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -5,20 +5,48 @@
  */
 package Vista;
 
+import Modelo.Usuario;
+
 /**
  *
  * @author Denis Arango
  */
 public class Inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio
-     */
+    Usuario mod;
+    
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null); 
     }
 
+    public Inicio(Usuario mod){
+        initComponents();
+        this.setLocationRelativeTo(null); 
+        this.mod = mod;
+        
+        switch(mod.getIdRol()){
+            case 1:
+                break;
+            case 2:
+                opNuevaFactura.setVisible(false);
+                opNuevoCliente.setVisible(false);
+                menCompras.setVisible(false);
+                opNuevoProveedor.setVisible(false);
+                opNuevoUsuario.setVisible(false);
+                break;
+            case 3:
+                menCompras.setVisible(false);
+                menProveedores.setVisible(false);
+                menUsuarios.setVisible(false);
+                break;
+            case 4:
+                menFacturas.setVisible(false);
+                menClientes.setVisible(false);
+                menUsuarios.setVisible(false);
+            break;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,16 +57,16 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        opConsultarFacturas = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menFacturas = new javax.swing.JMenu();
+        opNuevaFactura = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        opConsultarProductos = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        opConsultarClientes = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        opNuevoIngreso = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        menProductos = new javax.swing.JMenu();
+        opConsultarProductos = new javax.swing.JMenuItem();
+        menClientes = new javax.swing.JMenu();
+        opNuevoCliente = new javax.swing.JMenuItem();
+        opConsultarClientes = new javax.swing.JMenuItem();
+        menCompras = new javax.swing.JMenu();
+        opNuevoIngreso = new javax.swing.JMenuItem();
         menProveedores = new javax.swing.JMenu();
         opNuevoProveedor = new javax.swing.JMenuItem();
         opConsultarProveedores = new javax.swing.JMenuItem();
@@ -48,44 +76,44 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        opConsultarFacturas.setText("Facturas");
+        menFacturas.setText("Facturas");
 
-        jMenuItem1.setText("Nueva Factura");
-        opConsultarFacturas.add(jMenuItem1);
+        opNuevaFactura.setText("Nueva Factura");
+        menFacturas.add(opNuevaFactura);
 
         jMenuItem2.setText("Consultar Facturas");
-        opConsultarFacturas.add(jMenuItem2);
+        menFacturas.add(jMenuItem2);
 
-        jMenuBar1.add(opConsultarFacturas);
+        jMenuBar1.add(menFacturas);
 
-        opConsultarProductos.setText("Productos");
+        menProductos.setText("Productos");
 
-        jMenuItem3.setText("Consultar Productos");
-        opConsultarProductos.add(jMenuItem3);
+        opConsultarProductos.setText("Consultar Productos");
+        menProductos.add(opConsultarProductos);
 
-        jMenuBar1.add(opConsultarProductos);
+        jMenuBar1.add(menProductos);
 
-        opConsultarClientes.setText("Clientes");
+        menClientes.setText("Clientes");
 
-        jMenuItem4.setText("Nuevo Cliente");
-        opConsultarClientes.add(jMenuItem4);
+        opNuevoCliente.setText("Nuevo Cliente");
+        menClientes.add(opNuevoCliente);
 
-        jMenuItem5.setText("Consultar Clientes");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        opConsultarClientes.setText("Consultar Clientes");
+        opConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                opConsultarClientesActionPerformed(evt);
             }
         });
-        opConsultarClientes.add(jMenuItem5);
+        menClientes.add(opConsultarClientes);
 
-        jMenuBar1.add(opConsultarClientes);
+        jMenuBar1.add(menClientes);
 
-        opNuevoIngreso.setText("Compras");
+        menCompras.setText("Compras");
 
-        jMenuItem12.setText("Nuevo Ingreso");
-        opNuevoIngreso.add(jMenuItem12);
+        opNuevoIngreso.setText("Nuevo Ingreso");
+        menCompras.add(opNuevoIngreso);
 
-        jMenuBar1.add(opNuevoIngreso);
+        jMenuBar1.add(menCompras);
 
         menProveedores.setText("Proveedores");
 
@@ -123,9 +151,9 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void opConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opConsultarClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_opConsultarClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,20 +192,20 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenu menClientes;
+    private javax.swing.JMenu menCompras;
+    private javax.swing.JMenu menFacturas;
+    private javax.swing.JMenu menProductos;
     private javax.swing.JMenu menProveedores;
     private javax.swing.JMenu menUsuarios;
-    private javax.swing.JMenu opConsultarClientes;
-    private javax.swing.JMenu opConsultarFacturas;
-    private javax.swing.JMenu opConsultarProductos;
+    private javax.swing.JMenuItem opConsultarClientes;
+    private javax.swing.JMenuItem opConsultarProductos;
     private javax.swing.JMenuItem opConsultarProveedores;
     private javax.swing.JMenuItem opConsultarUsuarios;
-    private javax.swing.JMenu opNuevoIngreso;
+    private javax.swing.JMenuItem opNuevaFactura;
+    private javax.swing.JMenuItem opNuevoCliente;
+    private javax.swing.JMenuItem opNuevoIngreso;
     private javax.swing.JMenuItem opNuevoProveedor;
     private javax.swing.JMenuItem opNuevoUsuario;
     // End of variables declaration//GEN-END:variables
