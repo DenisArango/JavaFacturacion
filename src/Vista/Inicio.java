@@ -14,6 +14,8 @@ import Modelo.Usuario;
 public class Inicio extends javax.swing.JFrame {
 
     Usuario mod;
+    Inicio vInicio;
+    Proveedores vProveedores;
     
     public Inicio() {
         initComponents();
@@ -30,10 +32,7 @@ public class Inicio extends javax.swing.JFrame {
                 break;
             case 2:
                 opNuevaFactura.setVisible(false);
-                opNuevoCliente.setVisible(false);
                 menCompras.setVisible(false);
-                opNuevoProveedor.setVisible(false);
-                opNuevoUsuario.setVisible(false);
                 break;
             case 3:
                 menCompras.setVisible(false);
@@ -63,15 +62,12 @@ public class Inicio extends javax.swing.JFrame {
         menProductos = new javax.swing.JMenu();
         opConsultarProductos = new javax.swing.JMenuItem();
         menClientes = new javax.swing.JMenu();
-        opNuevoCliente = new javax.swing.JMenuItem();
         opConsultarClientes = new javax.swing.JMenuItem();
         menCompras = new javax.swing.JMenu();
         opNuevoIngreso = new javax.swing.JMenuItem();
         menProveedores = new javax.swing.JMenu();
-        opNuevoProveedor = new javax.swing.JMenuItem();
         opConsultarProveedores = new javax.swing.JMenuItem();
         menUsuarios = new javax.swing.JMenu();
-        opNuevoUsuario = new javax.swing.JMenuItem();
         opConsultarUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,9 +91,6 @@ public class Inicio extends javax.swing.JFrame {
 
         menClientes.setText("Clientes");
 
-        opNuevoCliente.setText("Nuevo Cliente");
-        menClientes.add(opNuevoCliente);
-
         opConsultarClientes.setText("Consultar Clientes");
         opConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,18 +110,17 @@ public class Inicio extends javax.swing.JFrame {
 
         menProveedores.setText("Proveedores");
 
-        opNuevoProveedor.setText("Nuevo Proveedor");
-        menProveedores.add(opNuevoProveedor);
-
-        opConsultarProveedores.setText("Consultar Proveedores");
+        opConsultarProveedores.setText("Proveedores");
+        opConsultarProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opConsultarProveedoresActionPerformed(evt);
+            }
+        });
         menProveedores.add(opConsultarProveedores);
 
         jMenuBar1.add(menProveedores);
 
         menUsuarios.setText("Usuarios");
-
-        opNuevoUsuario.setText("Nuevo Usuario");
-        menUsuarios.add(opNuevoUsuario);
 
         opConsultarUsuarios.setText("Consultar Usuarios");
         menUsuarios.add(opConsultarUsuarios);
@@ -154,6 +146,11 @@ public class Inicio extends javax.swing.JFrame {
     private void opConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opConsultarClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_opConsultarClientesActionPerformed
+
+    private void opConsultarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opConsultarProveedoresActionPerformed
+        vProveedores = new Proveedores();
+        vProveedores.setVisible(true);
+    }//GEN-LAST:event_opConsultarProveedoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,9 +201,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem opConsultarProveedores;
     private javax.swing.JMenuItem opConsultarUsuarios;
     private javax.swing.JMenuItem opNuevaFactura;
-    private javax.swing.JMenuItem opNuevoCliente;
     private javax.swing.JMenuItem opNuevoIngreso;
-    private javax.swing.JMenuItem opNuevoProveedor;
-    private javax.swing.JMenuItem opNuevoUsuario;
     // End of variables declaration//GEN-END:variables
 }
