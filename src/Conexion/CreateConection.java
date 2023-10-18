@@ -40,7 +40,7 @@ public class CreateConection {
         InputStream in = null;
         try {
             
-            in = Files.newInputStream(FileSystems.getDefault().getPath("D:\\NetBeansProyects\\JavaFacturacion\\src\\Conexion\\db_props.properties"));
+            in = Files.newInputStream(FileSystems.getDefault().getPath("C:\\Users\\ruben\\OneDrive\\Escritorio\\proyectifinalprogra\\JavaFacturacion\\src\\Conexion\\db_props.properties"));
             props.load(in);
             in.close();
             

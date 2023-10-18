@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.SqlUsuarios;
 import Modelo.Usuario;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,8 +63,21 @@ public class Login extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnLoginKeyReleased(evt);
+            }
+        });
 
         txtContraseña.setPreferredSize(new java.awt.Dimension(5, 22));
+        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,6 +127,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+
         SqlUsuarios modSql = new SqlUsuarios();
         Usuario mod = new Usuario();
         String usuario = txtUsuario.getText();
@@ -139,12 +154,57 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "El usuario está inactivo");
                     break;
             }
+    
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+
+    }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void btnLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginKeyReleased
+
+    private void txtContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyPressed
+      
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+        SqlUsuarios modSql = new SqlUsuarios();
+        Usuario mod = new Usuario();
+        String usuario = txtUsuario.getText();
+        String contraseña = new String(txtContraseña.getPassword());
+        
+        mod.setUsuario(usuario);
+        mod.setContraseña(contraseña);
+        
+        if (usuario.equals("") || contraseña.equals("")) {
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        } else {
+            switch (modSql.Login(mod)) {
+                case 1:
+                    frmLogin = null;
+                    this.dispose();
+                    vistaInicio = new Inicio(mod);
+                    vistaInicio.setVisible(true);
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "El usuario está inactivo");
+                    break;
+            }
+        }
+    }
+
+
+
+    }//GEN-LAST:event_txtContraseñaKeyPressed
 
     /**
      * @param args the command line arguments
