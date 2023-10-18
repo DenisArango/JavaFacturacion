@@ -16,10 +16,13 @@ public class Inicio extends javax.swing.JFrame {
     Usuario mod;
     Inicio vInicio;
     Proveedores vProveedores;
+    Clientes vClientes;
+    Productos vProductos;
     
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null); 
+        this.setTitle("Menú");
     }
 
     public Inicio(Usuario mod){
@@ -32,10 +35,10 @@ public class Inicio extends javax.swing.JFrame {
                 break;
             case 2:
                 opNuevaFactura.setVisible(false);
-                menCompras.setVisible(false);
+                menIngresos.setVisible(false);
                 break;
             case 3:
-                menCompras.setVisible(false);
+                menIngresos.setVisible(false);
                 menProveedores.setVisible(false);
                 menUsuarios.setVisible(false);
                 break;
@@ -60,15 +63,15 @@ public class Inicio extends javax.swing.JFrame {
         opNuevaFactura = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         menProductos = new javax.swing.JMenu();
-        opConsultarProductos = new javax.swing.JMenuItem();
+        opListaProductos = new javax.swing.JMenuItem();
         menClientes = new javax.swing.JMenu();
-        opConsultarClientes = new javax.swing.JMenuItem();
-        menCompras = new javax.swing.JMenu();
+        opListaClientes = new javax.swing.JMenuItem();
+        menIngresos = new javax.swing.JMenu();
         opNuevoIngreso = new javax.swing.JMenuItem();
         menProveedores = new javax.swing.JMenu();
-        opConsultarProveedores = new javax.swing.JMenuItem();
+        opListaProveedores = new javax.swing.JMenuItem();
         menUsuarios = new javax.swing.JMenu();
-        opConsultarUsuarios = new javax.swing.JMenuItem();
+        opListaUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,46 +87,51 @@ public class Inicio extends javax.swing.JFrame {
 
         menProductos.setText("Productos");
 
-        opConsultarProductos.setText("Consultar Productos");
-        menProductos.add(opConsultarProductos);
+        opListaProductos.setText("Lista de Productos");
+        opListaProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opListaProductosActionPerformed(evt);
+            }
+        });
+        menProductos.add(opListaProductos);
 
         jMenuBar1.add(menProductos);
 
         menClientes.setText("Clientes");
 
-        opConsultarClientes.setText("Consultar Clientes");
-        opConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
+        opListaClientes.setText("Lista de Clientes");
+        opListaClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opConsultarClientesActionPerformed(evt);
+                opListaClientesActionPerformed(evt);
             }
         });
-        menClientes.add(opConsultarClientes);
+        menClientes.add(opListaClientes);
 
         jMenuBar1.add(menClientes);
 
-        menCompras.setText("Compras");
+        menIngresos.setText("Ingresos");
 
         opNuevoIngreso.setText("Nuevo Ingreso");
-        menCompras.add(opNuevoIngreso);
+        menIngresos.add(opNuevoIngreso);
 
-        jMenuBar1.add(menCompras);
+        jMenuBar1.add(menIngresos);
 
         menProveedores.setText("Proveedores");
 
-        opConsultarProveedores.setText("Proveedores");
-        opConsultarProveedores.addActionListener(new java.awt.event.ActionListener() {
+        opListaProveedores.setText("Lista Proveedores");
+        opListaProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opConsultarProveedoresActionPerformed(evt);
+                opListaProveedoresActionPerformed(evt);
             }
         });
-        menProveedores.add(opConsultarProveedores);
+        menProveedores.add(opListaProveedores);
 
         jMenuBar1.add(menProveedores);
 
         menUsuarios.setText("Usuarios");
 
-        opConsultarUsuarios.setText("Consultar Usuarios");
-        menUsuarios.add(opConsultarUsuarios);
+        opListaUsuarios.setText("Lista Usuarios");
+        menUsuarios.add(opListaUsuarios);
 
         jMenuBar1.add(menUsuarios);
 
@@ -143,14 +151,21 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void opConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opConsultarClientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opConsultarClientesActionPerformed
+    private void opListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaClientesActionPerformed
+        vClientes = new Clientes();
+        vClientes.setVisible(true);
+    }//GEN-LAST:event_opListaClientesActionPerformed
 
-    private void opConsultarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opConsultarProveedoresActionPerformed
+    private void opListaProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaProveedoresActionPerformed
         vProveedores = new Proveedores();
+        vInicio.setVisible(false);
         vProveedores.setVisible(true);
-    }//GEN-LAST:event_opConsultarProveedoresActionPerformed
+    }//GEN-LAST:event_opListaProveedoresActionPerformed
+
+    private void opListaProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaProductosActionPerformed
+        vProductos = new Productos();
+        vProductos.setVisible(true);
+    }//GEN-LAST:event_opListaProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,15 +206,15 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menClientes;
-    private javax.swing.JMenu menCompras;
     private javax.swing.JMenu menFacturas;
+    private javax.swing.JMenu menIngresos;
     private javax.swing.JMenu menProductos;
     private javax.swing.JMenu menProveedores;
     private javax.swing.JMenu menUsuarios;
-    private javax.swing.JMenuItem opConsultarClientes;
-    private javax.swing.JMenuItem opConsultarProductos;
-    private javax.swing.JMenuItem opConsultarProveedores;
-    private javax.swing.JMenuItem opConsultarUsuarios;
+    private javax.swing.JMenuItem opListaClientes;
+    private javax.swing.JMenuItem opListaProductos;
+    private javax.swing.JMenuItem opListaProveedores;
+    private javax.swing.JMenuItem opListaUsuarios;
     private javax.swing.JMenuItem opNuevaFactura;
     private javax.swing.JMenuItem opNuevoIngreso;
     // End of variables declaration//GEN-END:variables
