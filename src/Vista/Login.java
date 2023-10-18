@@ -22,6 +22,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); 
+        this.setTitle("Login");
     }
 
      
@@ -137,7 +138,7 @@ public class Login extends javax.swing.JFrame {
         mod.setContraseña(contraseña);
         
         if(usuario.equals("") || contraseña.equals("")){
-            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
             switch (modSql.Login(mod)) {
@@ -148,10 +149,10 @@ public class Login extends javax.swing.JFrame {
                     vistaInicio.setVisible(true);
                     break;
                 case 0:
-                    JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales");
+                    JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales", "Error", JOptionPane.ERROR_MESSAGE);
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "El usuario está inactivo");
+                    JOptionPane.showMessageDialog(null, "El usuario está inactivo", "Error", JOptionPane.ERROR_MESSAGE);
                     break;
             }
     
@@ -183,7 +184,7 @@ public class Login extends javax.swing.JFrame {
         mod.setContraseña(contraseña);
         
         if (usuario.equals("") || contraseña.equals("")) {
-            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             switch (modSql.Login(mod)) {
                 case 1:
@@ -193,10 +194,10 @@ public class Login extends javax.swing.JFrame {
                     vistaInicio.setVisible(true);
                     break;
                 case 0:
-                    JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales");
+                    JOptionPane.showMessageDialog(null, "El usuario no existe, verificar credenciales", "Error", JOptionPane.ERROR_MESSAGE);
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "El usuario está inactivo");
+                    JOptionPane.showMessageDialog(null, "El usuario está inactivo", "Error", JOptionPane.ERROR_MESSAGE);
                     break;
             }
         }

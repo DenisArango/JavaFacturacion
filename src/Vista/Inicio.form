@@ -26,10 +26,13 @@
             <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="opConsultarProductos">
+            <MenuItem class="javax.swing.JMenuItem" name="opListaProductos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar Productos"/>
+                <Property name="text" type="java.lang.String" value="Lista de Productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opListaProductosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -38,19 +41,19 @@
             <Property name="text" type="java.lang.String" value="Clientes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="opConsultarClientes">
+            <MenuItem class="javax.swing.JMenuItem" name="opListaClientes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar Clientes"/>
+                <Property name="text" type="java.lang.String" value="Lista de Clientes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opConsultarClientesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opListaClientesActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menCompras">
+        <Menu class="javax.swing.JMenu" name="menIngresos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Compras"/>
+            <Property name="text" type="java.lang.String" value="Ingresos"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="opNuevoIngreso">
@@ -65,12 +68,12 @@
             <Property name="text" type="java.lang.String" value="Proveedores"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="opConsultarProveedores">
+            <MenuItem class="javax.swing.JMenuItem" name="opListaProveedores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Proveedores"/>
+                <Property name="text" type="java.lang.String" value="Lista Proveedores"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opConsultarProveedoresActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opListaProveedoresActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -80,9 +83,9 @@
             <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="opConsultarUsuarios">
+            <MenuItem class="javax.swing.JMenuItem" name="opListaUsuarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar Usuarios"/>
+                <Property name="text" type="java.lang.String" value="Lista Usuarios"/>
               </Properties>
             </MenuItem>
           </SubComponents>
