@@ -52,20 +52,16 @@ public class Login extends javax.swing.JFrame {
                 formWindowClosed(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Usuario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 29, -1, -1));
 
         jLabel2.setText("Contraseña");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, -1, -1));
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 26, 163, -1));
 
         btnLogin.setText("Iniciar");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +77,6 @@ public class Login extends javax.swing.JFrame {
                 btnLoginKeyReleased(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         txtContraseña.setPreferredSize(new java.awt.Dimension(5, 22));
         txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -89,7 +84,6 @@ public class Login extends javax.swing.JFrame {
                 txtContraseñaKeyPressed(evt);
             }
         });
-        getContentPane().add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 77, 163, -1));
 
         imgmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mostrar_ojo32.png"))); // NOI18N
         imgmostrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +91,6 @@ public class Login extends javax.swing.JFrame {
                 imgmostrarMouseClicked(evt);
             }
         });
-        getContentPane().add(imgmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 22));
 
         imgocultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ocultar_ojo32.png"))); // NOI18N
         imgocultar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,7 +98,50 @@ public class Login extends javax.swing.JFrame {
                 imgocultarMouseClicked(evt);
             }
         });
-        getContentPane().add(imgocultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 25));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imgmostrar)
+                    .addComponent(imgocultar)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(btnLogin))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(imgmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imgocultar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(15, 15, 15)
+                .addComponent(btnLogin))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
