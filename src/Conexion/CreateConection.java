@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,7 +41,7 @@ public class CreateConection {
         InputStream in = null;
         try {
             
-            in = Files.newInputStream(FileSystems.getDefault().getPath("C:\\Users\\ruben\\OneDrive\\Escritorio\\proyectifinalprogra\\JavaFacturacion\\src\\Conexion\\db_props.properties"));
+            in = Files.newInputStream(Paths.get("src/conexion/db_props.properties"));
             props.load(in);
             in.close();
             

@@ -7,6 +7,8 @@ package Vista;
 
 import Conexion.CreateConection;
 import Modelo.Empleado;
+import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,6 +43,7 @@ public class Empleados extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Lista de Empleados");
         cargarEmpleados();
+        prepararBotones();
     }
 
     /**
@@ -378,6 +382,27 @@ public class Empleados extends javax.swing.JFrame {
         txtSalario.setText(null);
         dateFecha.setDate(null);
 
+    }
+        
+        private void prepararBotones(){
+        btnGuardarCambios.setForeground(Color.red);
+        btnGuardarCambios.setFocusPainted(false);
+        btnGuardarCambios.setBorderPainted(false);
+        btnGuardarCambios.setContentAreaFilled(false);
+        ImageIcon guardarCambios = new ImageIcon(getClass().getResource("GuardarCambios.png"));
+        btnGuardarCambios.setIcon(new ImageIcon(guardarCambios.getImage().getScaledInstance(btnGuardarCambios.getWidth(), btnGuardarCambios.getHeight(), Image.SCALE_AREA_AVERAGING)));
+        btnEliminar.setForeground(Color.red);
+        btnEliminar.setFocusPainted(false);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        ImageIcon eliminarRegistro = new ImageIcon(getClass().getResource("EliminarRegistro.png"));
+        btnEliminar.setIcon(new ImageIcon(eliminarRegistro.getImage().getScaledInstance(btnEliminar.getWidth(), btnEliminar.getHeight(), Image.SCALE_AREA_AVERAGING)));
+        btnNuevo.setForeground(Color.red);
+        btnNuevo.setFocusPainted(false);
+        btnNuevo.setBorderPainted(false);
+        btnNuevo.setContentAreaFilled(false);
+        ImageIcon nuevoRegistro = new ImageIcon(getClass().getResource("NuevoRegistro.png"));
+        btnNuevo.setIcon(new ImageIcon(nuevoRegistro.getImage().getScaledInstance(btnNuevo.getWidth(), btnNuevo.getHeight(), Image.SCALE_AREA_AVERAGING)));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
