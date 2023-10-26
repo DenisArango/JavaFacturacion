@@ -7,7 +7,9 @@ package Vista;
 
 import Modelo.SqlUsuarios;
 import Modelo.Usuario;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -206,7 +208,7 @@ public class Login extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_txtContraseñaKeyPressed
-
+    
     /**
      * @param args the command line arguments
      */
