@@ -18,6 +18,8 @@ public class Inicio extends javax.swing.JFrame {
     Proveedores vProveedores;
     Clientes vClientes;
     Productos vProductos;
+    Usuarios vUsuarios;
+   
     
     public Inicio() {
         initComponents();
@@ -131,6 +133,11 @@ public class Inicio extends javax.swing.JFrame {
         menUsuarios.setText("Usuarios");
 
         opListaUsuarios.setText("Lista Usuarios");
+        opListaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opListaUsuariosActionPerformed(evt);
+            }
+        });
         menUsuarios.add(opListaUsuarios);
 
         jMenuBar1.add(menUsuarios);
@@ -158,7 +165,6 @@ public class Inicio extends javax.swing.JFrame {
 
     private void opListaProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaProveedoresActionPerformed
         vProveedores = new Proveedores();
-        vInicio.setVisible(false);
         vProveedores.setVisible(true);
     }//GEN-LAST:event_opListaProveedoresActionPerformed
 
@@ -167,6 +173,12 @@ public class Inicio extends javax.swing.JFrame {
         vProductos.setVisible(true);
     }//GEN-LAST:event_opListaProductosActionPerformed
 
+    private void opListaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaUsuariosActionPerformed
+        vUsuarios = new Usuarios();
+        vUsuarios.setVisible(true);
+    }//GEN-LAST:event_opListaUsuariosActionPerformed
+
+   
     /**
      * @param args the command line arguments
      */
