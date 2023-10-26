@@ -56,7 +56,6 @@
                       <Component id="btnEliminar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnNuevo" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -67,23 +66,16 @@
                           <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtUsuario" alignment="0" pref="234" max="32767" attributes="0"/>
-                              <Component id="txtContraseña" pref="234" max="32767" attributes="0"/>
-                              <Component id="cmbEstado" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cmbRol" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmbEmpleado" min="-2" pref="228" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cmbEstado" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                          <Component id="cmbEmpleado" alignment="0" pref="183" max="32767" attributes="0"/>
+                          <Component id="txtContraseña" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtUsuario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbRol" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
+              <EmptySpace min="57" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -168,7 +160,7 @@
           <Color blue="f0" green="f0" red="f0" type="rgb"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -182,7 +174,7 @@
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -192,7 +184,7 @@
     <Component class="javax.swing.JButton" name="btnNuevo">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor de Mano"/>
         </Property>
       </Properties>
       <Events>
@@ -216,12 +208,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Id Empleado:"/>
+        <Property name="text" type="java.lang.String" value="Empleado:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Id Rol"/>
+        <Property name="text" type="java.lang.String" value="Rol:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbEstado">

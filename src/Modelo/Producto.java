@@ -180,4 +180,20 @@ public class Producto {
             return completado;
         }
     }
+    
+    public int agregarStock(int barcode, int stock, String usuario){
+        try {
+            qry = "CALL AGREGAR_STOCK(?,?,?)";
+            conn = cn.getConection();
+            cs = conn.prepareCall(qry);
+            cs.setInt(1, barcode);
+            cs.setInt(2, stock);
+            cs.setString(3, usuario);
+            completado = cs.executeUpdate();
+            return completado;
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            return completado;
+        }
+    }
 }

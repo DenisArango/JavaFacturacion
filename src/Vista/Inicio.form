@@ -51,18 +51,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menIngresos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ingresos"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="opNuevoIngreso">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nuevo Ingreso"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="menProveedores">
           <Properties>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
@@ -89,6 +77,36 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opListaUsuariosActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menEmpleados">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Empleados"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="opListaEmpleados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lista empleados"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opListaEmpleadosActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menTrans">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Transacciones"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="opListaTransacciones">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lista Transacciones"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opListaTransaccionesActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -64,6 +64,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         btnLogin.setText("Iniciar");
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
