@@ -121,6 +121,15 @@ public class Clientes extends javax.swing.JFrame {
 
             }
         ));
+        tablaClientes.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tablaClientesAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         tablaClientes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tablaClientesFocusGained(evt);
@@ -139,21 +148,21 @@ public class Clientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaClientes);
 
         btnGuardarCambios.setForeground(new java.awt.Color(240, 240, 240));
-        btnGuardarCambios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarCambios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarCambiosActionPerformed(evt);
             }
         });
 
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
 
-        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -359,6 +368,10 @@ public class Clientes extends javax.swing.JFrame {
     private void cmbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbEstadoActionPerformed
+
+    private void tablaClientesAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaClientesAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaClientesAncestorAdded
 
     /**
      * @param args the command line arguments
