@@ -7,6 +7,7 @@ package Vista;
 
 import Conexion.CreateConection;
 import Modelo.Producto;
+import Modelo.Usuario;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
@@ -35,9 +36,17 @@ public class Productos extends javax.swing.JFrame {
     ResultSet rs = null;
     Producto producto = new Producto();
     DefaultComboBoxModel modelcmb = new DefaultComboBoxModel();
+    Usuario mod;
     
     public Productos() {
         initComponents();
+        this.setLocationRelativeTo(null); 
+        this.setTitle("Lista de productos");
+    }
+    
+    public Productos(Usuario mod) {
+        initComponents();
+        this.mod = mod;
         this.setLocationRelativeTo(null); 
         this.setTitle("Lista de productos");
         cargarProveedores();
@@ -77,6 +86,7 @@ public class Productos extends javax.swing.JFrame {
         cmbProveedor = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         txtBarcode = new javax.swing.JTextField();
+        btnAddStock = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -187,6 +197,13 @@ public class Productos extends javax.swing.JFrame {
 
         jLabel16.setText("Codigo de Barras:");
 
+        btnAddStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStockActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,7 +227,10 @@ public class Productos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel12)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAddStock, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel13)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15)
@@ -248,9 +268,11 @@ public class Productos extends javax.swing.JFrame {
                             .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12))
+                            .addComponent(btnAddStock, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtStockMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,6 +380,23 @@ public class Productos extends javax.swing.JFrame {
     private void txtStockMinimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockMinimoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockMinimoActionPerformed
+
+    private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed
+        int barcode = Integer.parseInt(txtBarcode.getText());
+        String usuario = mod.getUsuario();
+        String addStock = JOptionPane.showInputDialog(null, "Cantidad de Stock a agregar:", "Agregar Stock", JOptionPane.QUESTION_MESSAGE);
+        if(addStock.equals("") || Integer.parseInt(addStock) < 1){
+           JOptionPane.showMessageDialog(null, "La cantidad no puede ser nula o menor a 1", "Error", JOptionPane.ERROR_MESSAGE); 
+        }else{
+            if(producto.agregarStock(barcode, Integer.parseInt(addStock), usuario) == 0){
+                JOptionPane.showMessageDialog(null, "Se añadio el stock correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                limpiarCampos();
+                cargarProductos();
+            }else{
+                JOptionPane.showMessageDialog(null, "Fallo al intentar añadir stock", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAddStockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,6 +513,12 @@ public class Productos extends javax.swing.JFrame {
         btnNuevo.setContentAreaFilled(false);
         ImageIcon nuevoRegistro = new ImageIcon(getClass().getResource("NuevoRegistro.png"));
         btnNuevo.setIcon(new ImageIcon(nuevoRegistro.getImage().getScaledInstance(btnNuevo.getWidth(), btnNuevo.getHeight(), Image.SCALE_AREA_AVERAGING)));
+        btnAddStock.setForeground(Color.red);
+        btnAddStock.setFocusPainted(false);
+        btnAddStock.setBorderPainted(false);
+        btnAddStock.setContentAreaFilled(false);
+        ImageIcon addStock = new ImageIcon(getClass().getResource("AgregarStock.png"));
+        btnAddStock.setIcon(new ImageIcon(addStock.getImage().getScaledInstance(btnAddStock.getWidth(), btnAddStock.getHeight(), Image.SCALE_AREA_AVERAGING)));
         cmbProveedor.setModel(modelcmb);
         cmbProveedor.setSelectedItem(null);
         txtStock.setEditable(false);
@@ -491,6 +536,7 @@ public class Productos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddStock;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardarCambios;
     private javax.swing.JButton btnNuevo;
