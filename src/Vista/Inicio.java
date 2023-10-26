@@ -158,7 +158,6 @@ public class Inicio extends javax.swing.JFrame {
 
     private void opListaProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaProveedoresActionPerformed
         vProveedores = new Proveedores();
-        vInicio.setVisible(false);
         vProveedores.setVisible(true);
     }//GEN-LAST:event_opListaProveedoresActionPerformed
 

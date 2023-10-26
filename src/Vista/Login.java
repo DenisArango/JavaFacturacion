@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); 
         this.setTitle("Login");
+        this.imgocultar.setVisible(false);
     }
 
      
@@ -40,23 +41,31 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         txtContraseña = new javax.swing.JPasswordField();
+        imgmostrar = new javax.swing.JLabel();
+        imgocultar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(2147483647, 214748364));
+        setSize(new java.awt.Dimension(0, 0));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 29, -1, -1));
 
         jLabel2.setText("Contraseña");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, -1, -1));
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 26, 163, -1));
 
         btnLogin.setText("Iniciar");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +81,7 @@ public class Login extends javax.swing.JFrame {
                 btnLoginKeyReleased(evt);
             }
         });
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         txtContraseña.setPreferredSize(new java.awt.Dimension(5, 22));
         txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -79,46 +89,23 @@ public class Login extends javax.swing.JFrame {
                 txtContraseñaKeyPressed(evt);
             }
         });
+        getContentPane().add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 77, 163, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(btnLogin)))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel2)
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)))
-                .addComponent(btnLogin)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        imgmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mostrar_ojo32.png"))); // NOI18N
+        imgmostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgmostrarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 22));
+
+        imgocultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ocultar_ojo32.png"))); // NOI18N
+        imgocultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgocultarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgocultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 25));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,6 +194,18 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtContraseñaKeyPressed
 
+    private void imgmostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgmostrarMouseClicked
+         imgmostrar.setVisible(false);
+         imgocultar.setVisible(true);
+         txtContraseña.setEchoChar((char)0);
+    }//GEN-LAST:event_imgmostrarMouseClicked
+
+    private void imgocultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgocultarMouseClicked
+        imgmostrar.setVisible(true);
+        imgocultar.setVisible(false);
+        txtContraseña.setEchoChar('●');
+    }//GEN-LAST:event_imgocultarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +243,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel imgmostrar;
+    private javax.swing.JLabel imgocultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField txtContraseña;
