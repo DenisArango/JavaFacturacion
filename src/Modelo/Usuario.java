@@ -95,7 +95,7 @@ public class Usuario {
     public int getIdEmpleadoPorUsuario(String Nombre){
         int id = 0;
         try {
-            qry = "SELECT DISTINCT(ID_EMPLEADO) AS ID FROM GET_EMPLEADOS() WHERE NOMBRE = ?";
+            qry = "SELECT DISTINCT(ID_EMPLEADO) AS ID FROM GET_EMPLEADO() WHERE NOMBRE = ?";
             conn = cn.getConection();
             st = conn.prepareStatement(qry);
             st.setString(1, Nombre);

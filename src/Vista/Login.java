@@ -9,6 +9,10 @@ import Modelo.SqlUsuarios;
 import Modelo.Usuario;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -247,11 +251,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lblOcultarMouseClicked
     
     private void cargarEtiquetas(){
-        ImageIcon mostrarOjo = new ImageIcon(getClass().getResource("mostrar_ojo32.png"));
+        ImageIcon mostrarOjo = new ImageIcon(convertFile("src/iconos/mostrar_ojo32.png").toString());
         lblMostrar.setIcon(new ImageIcon(mostrarOjo.getImage().getScaledInstance(lblMostrar.getWidth(), lblMostrar.getHeight(), Image.SCALE_AREA_AVERAGING)));
-        ImageIcon ocultarOjo = new ImageIcon(getClass().getResource("ocultar_ojo32.png"));
+        ImageIcon ocultarOjo = new ImageIcon(convertFile("src/iconos/ocultar_ojo32.png").toString());
         lblOcultar.setIcon(new ImageIcon(ocultarOjo.getImage().getScaledInstance(lblOcultar.getWidth(), lblOcultar.getHeight(), Image.SCALE_AREA_AVERAGING)));
         lblOcultar.setVisible(false);
+    }
+    
+    private Path convertFile(String archivo){
+        String path = new File(archivo).getAbsolutePath();
+        return Paths.get(path);
     }
     
     /**

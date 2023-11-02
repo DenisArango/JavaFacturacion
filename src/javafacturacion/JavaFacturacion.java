@@ -5,6 +5,8 @@
  */
 package javafacturacion;
 
+import Vista.Login;
+
 
 /**
  *
@@ -16,7 +18,9 @@ public class JavaFacturacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+           
+        Login vLogin = new Login();
+        vLogin.setVisible(true);
     }
     
 }

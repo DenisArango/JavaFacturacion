@@ -6,12 +6,8 @@
 package Conexion;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -25,11 +21,12 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author Javier Ramírez
+ * @author Denis Arango
  */
 public class CreateConection {
     static Properties props = new Properties();
-
+    String path = new File("src/Conexion/db_props.properties").getAbsolutePath();
+    
     String hostname = null;
     String port = null;
     String database = null;
@@ -40,8 +37,7 @@ public class CreateConection {
     public CreateConection (){
         InputStream in = null;
         try {
-            
-            in = Files.newInputStream(Paths.get("src/conexion/db_props.properties"));
+            in = Files.newInputStream(Paths.get(path));
             props.load(in);
             in.close();
             
@@ -71,7 +67,6 @@ public class CreateConection {
             this.port + "/" + this.database;
     
     conn = DriverManager.getConnection(jdbcUrl,username,password);
-    System.out.println("Conexion establecida");
     
     return conn;
     }

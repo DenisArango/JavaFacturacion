@@ -9,6 +9,10 @@ import Conexion.CreateConection;
 import Modelo.Cliente;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -460,19 +464,19 @@ public class Clientes extends javax.swing.JFrame {
         btnGuardarCambios.setFocusPainted(false);
         btnGuardarCambios.setBorderPainted(false);
         btnGuardarCambios.setContentAreaFilled(false);
-        ImageIcon guardarCambios = new ImageIcon(getClass().getResource("GuardarCambios.png"));
+        ImageIcon guardarCambios = new ImageIcon(convertFile("src/iconos/GuardarCambios.png").toString());
         btnGuardarCambios.setIcon(new ImageIcon(guardarCambios.getImage().getScaledInstance(btnGuardarCambios.getWidth(), btnGuardarCambios.getHeight(), Image.SCALE_AREA_AVERAGING)));
         btnEliminar.setForeground(Color.red);
         btnEliminar.setFocusPainted(false);
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
-        ImageIcon eliminarRegistro = new ImageIcon(getClass().getResource("EliminarRegistro.png"));
+        ImageIcon eliminarRegistro = new ImageIcon(convertFile("src/iconos/EliminarRegistro.png").toString());
         btnEliminar.setIcon(new ImageIcon(eliminarRegistro.getImage().getScaledInstance(btnEliminar.getWidth(), btnEliminar.getHeight(), Image.SCALE_AREA_AVERAGING)));
         btnNuevo.setForeground(Color.red);
         btnNuevo.setFocusPainted(false);
         btnNuevo.setBorderPainted(false);
         btnNuevo.setContentAreaFilled(false);
-        ImageIcon nuevoRegistro = new ImageIcon(getClass().getResource("NuevoRegistro.png"));
+        ImageIcon nuevoRegistro = new ImageIcon(convertFile("src/iconos/NuevoRegistro.png").toString());
         btnNuevo.setIcon(new ImageIcon(nuevoRegistro.getImage().getScaledInstance(btnNuevo.getWidth(), btnNuevo.getHeight(), Image.SCALE_AREA_AVERAGING)));
         DefaultComboBoxModel modelcmb = new DefaultComboBoxModel();
         modelcmb.addElement("Inactivo");
@@ -491,6 +495,11 @@ public class Clientes extends javax.swing.JFrame {
         txtTelefono.setText(null);
         txtEmail.setText(null);
         cmbEstado.setSelectedItem(null);
+    }
+    
+    private Path convertFile(String archivo){
+        String path = new File(archivo).getAbsolutePath();
+        return Paths.get(path);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
