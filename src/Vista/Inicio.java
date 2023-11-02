@@ -6,6 +6,12 @@
 package Vista;
 
 import Modelo.Usuario;
+import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +27,8 @@ public class Inicio extends javax.swing.JFrame {
     Usuarios vUsuarios;
     Empleados vEmpleados;
     Transacciones vTrans;   
+    CrearFactura vNuevaFactura;
+    ListaFacturas vFacturas;
     
     public Inicio() {
         initComponents();
@@ -31,6 +39,7 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio(Usuario mod){
         initComponents();
         this.setLocationRelativeTo(null); 
+        this.setTitle("Menú");
         this.mod = mod;
         
         switch(mod.getIdRol()){
@@ -48,6 +57,13 @@ public class Inicio extends javax.swing.JFrame {
                 menTrans.setVisible(false);
                 break;
         }
+        
+        btnbk.setForeground(Color.red);
+        btnbk.setFocusPainted(false);
+        btnbk.setBorderPainted(false);
+        btnbk.setContentAreaFilled(false);
+        ImageIcon bk = new ImageIcon(convertFile("src/iconos/bk.jpg").toString());
+        btnbk.setIcon(new ImageIcon(bk.getImage().getScaledInstance(btnbk.getWidth(), btnbk.getHeight(), Image.SCALE_SMOOTH)));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +74,7 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnbk = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menFacturas = new javax.swing.JMenu();
         opNuevaFactura = new javax.swing.JMenuItem();
@@ -76,13 +93,25 @@ public class Inicio extends javax.swing.JFrame {
         opListaTransacciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(btnbk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 460));
 
         menFacturas.setText("Facturas");
 
         opNuevaFactura.setText("Nueva Factura");
+        opNuevaFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opNuevaFacturaActionPerformed(evt);
+            }
+        });
         menFacturas.add(opNuevaFactura);
 
         jMenuItem2.setText("Consultar Facturas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         menFacturas.add(jMenuItem2);
 
         jMenuBar1.add(menFacturas);
@@ -161,17 +190,6 @@ public class Inicio extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,6 +222,16 @@ public class Inicio extends javax.swing.JFrame {
         vTrans = new Transacciones();
         vTrans.setVisible(true);
     }//GEN-LAST:event_opListaTransaccionesActionPerformed
+
+    private void opNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opNuevaFacturaActionPerformed
+        vNuevaFactura = new CrearFactura(mod);
+        vNuevaFactura.setVisible(true);
+    }//GEN-LAST:event_opNuevaFacturaActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        vFacturas = new ListaFacturas();
+        vFacturas.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
    
     /**
@@ -240,8 +268,14 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
     }
+    
+    private Path convertFile(String archivo){
+        String path = new File(archivo).getAbsolutePath();
+        return Paths.get(path);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbk;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menClientes;
